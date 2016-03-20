@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `library`.`book` (
   `description` VARCHAR(175) NOT NULL,
   `date_of_publication` YEAR NULL,
   `publishing_id` INT NOT NULL,
-  `author_id` INT ,
+  `author_id` INT,
   `genre_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_book_publishing1_idx` (`publishing_id` ASC),
