@@ -19,8 +19,9 @@ USE `library` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `library`.`publishing` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `publishing_name` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`))
+  `publishing_name` VARCHAR(45)  NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `publishing_name_UNIQUE` (`publishing_name` ASC))
 ENGINE = InnoDB;
 
 
@@ -58,7 +59,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `library`.`genre` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `genre_name` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `genre_name_UNIQUE` (`genre_name` ASC))
 ENGINE = InnoDB;
 
 
