@@ -26,5 +26,4 @@ public class JpaUserDao extends JpaGenericDao<User, Long> implements UserDao {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 }
