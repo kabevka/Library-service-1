@@ -2,7 +2,6 @@ package edu.ita.softserve.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,8 +14,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name="instances_of_book")
 public class Instance implements Serializable{
-    
-    public Instance() {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7278372994898302015L;
+
+	public Instance() {
 	isAvailable = true;
     }
     
@@ -59,9 +63,6 @@ public class Instance implements Serializable{
     public String toString() {
 	return "Instance [id=" + id + ", isAvailable=" + isAvailable
 		+ ", book=" + book + "]";
-    }
-    
-    
-    
+    }  
 }
 
