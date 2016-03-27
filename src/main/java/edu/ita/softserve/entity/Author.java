@@ -1,4 +1,4 @@
-package org.library.entity;
+package edu.ita.softserve.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

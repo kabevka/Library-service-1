@@ -1,5 +1,4 @@
-package org.library.entity;
-
+package edu.ita.softserve.entity;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -26,10 +25,15 @@ import javax.persistence.TemporalType;
 @Table(name="books")
 public class Book implements Serializable{
     
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -458793870572406618L;
+
+	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id")
-    private long id;
+    private Long id;
     
     @Column(name="name", nullable=false)
     private String name;
@@ -52,11 +56,11 @@ public class Book implements Serializable{
     @Column(name="year_of_publishing", nullable=false)
     private int year;
     
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
