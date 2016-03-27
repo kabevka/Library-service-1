@@ -9,5 +9,5 @@ public interface GenericDao<T,V> {
 	void update(T t);
 	void delete(T t);
 	List<T> getAll();
-
+ 
 }
