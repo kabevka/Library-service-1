@@ -2,13 +2,17 @@ package edu.ita.softserve.dao.impl.jpa;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import edu.ita.softserve.dao.impl.UserDao;
 import edu.ita.softserve.entity.User;
 
 public class JpaUserDao extends JpaGenericDao<User, Long> implements UserDao {
 
+	
+
 	public List<User> getAllDeptors() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

@@ -4,34 +4,49 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
+import javax.transaction.Transaction;
 
 import edu.ita.softserve.dao.GenericDao;
 
 public abstract class JpaGenericDao<T,V> implements GenericDao<T, V> {
 	
 	private Class<T> entityType;
-	private EntityManager entityManager;
+	protected EntityManager entityManager;
 	
 	public JpaGenericDao() {
 		ParameterizedType genericSuperClass = (ParameterizedType) getClass()
                 .getGenericSuperclass();
         this.entityType = (Class<T>) genericSuperClass.getActualTypeArguments()[0]; 
+        
 	}
 	
 	public void add(T t) {
-		// TODO Auto-generated method stub
-		
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+		entityManager.persist(t);
+		entityTransaction.commit();		
 	}
 	
 	public void delete(T t) {
-		// TODO Auto-generated method stub
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+		entityManager.remove(t);
+		entityTransaction.commit();
 		
 	}
 	
 	public T findById(V id) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+		T t = entityManager.find(entityType, id);
+		entityTransaction.commit();
+		return t;
 	}
 	
 	public List<T> getAll() {
@@ -41,7 +56,10 @@ public abstract class JpaGenericDao<T,V> implements GenericDao<T, V> {
 	}
 	
 	public void update(T t) {
-		// TODO Auto-generated method stub
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+		entityManager.merge(t);
+		entityTransaction.commit();
 	}
 
 	public EntityManager getEntityManager() {
