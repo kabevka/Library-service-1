@@ -37,8 +37,7 @@ public class App
     	genericDao.getEntityManager().close();
     	
     	*/
-<<<<<<< HEAD
-=======
+
     	
     		EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistenceUnit");
     		EntityManager em = emf.createEntityManager();
@@ -65,7 +64,7 @@ public class App
     		em.close();
     		emf.close();
     		
->>>>>>> 45f9124d13ca83a1869589d1baa6440f45a437d0
+
     	
     	}
     }
