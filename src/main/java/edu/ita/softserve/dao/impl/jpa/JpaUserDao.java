@@ -11,12 +11,10 @@ import edu.ita.softserve.entity.User;
 
 public class JpaUserDao extends JpaGenericDao<User, Long> implements UserDao {
 
-	
-
 	public List<User> getAllDeptors() {
-		List<User> users = new ArrayList<User>();
-		Query query = entityManager.createQuery("select u from user u  left join taken t on user.id = taken.user where date_of_given_back<CURDATE()");
-		users = query.getResultList();
+		List<User> users = null;
+		Query query = entityManager.createNativeQuery("select user.* from user  where id = (select user_id from taken where date_of_given_back<curdate())",User.class);
+		users =(List<User>)query.getResultList();
 		return users;
 	}
 

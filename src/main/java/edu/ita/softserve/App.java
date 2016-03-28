@@ -34,9 +34,6 @@ public class App
     	
     	genericDao.add(user);
     	*/
-    	List<User> list = genericDao.getAllDeptors();
-    	System.out.println(list);
-    		
     	
     	}
     }
