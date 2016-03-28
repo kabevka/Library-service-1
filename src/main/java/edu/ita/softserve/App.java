@@ -1,13 +1,14 @@
 package edu.ita.softserve;
 
-import java.util.Iterator;
-import java.util.List;
 
-import edu.ita.softserve.dao.impl.jpa.JpaGenericDao;
-import edu.ita.softserve.dao.impl.jpa.JpaUserDao;
-import edu.ita.softserve.entity.Adress;
-import edu.ita.softserve.entity.User;
-import edu.ita.softserve.util.JPAUtil;
+import java.util.*;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+
+import edu.ita.softserve.entity.*;
 
 /**
  * Hello world!
@@ -16,10 +17,10 @@ import edu.ita.softserve.util.JPAUtil;
 public class App 
 {
     public static void main( String[] args ) {
-    	 
+    	/*
     	JpaUserDao genericDao = new JpaUserDao();
     	genericDao.setEntityManager(JPAUtil.getEntityManager());
-    	/*
+    	
     	Adress adress = new Adress();
     	adress.setCity("Lviv");
     	adress.setStreet("Lychakivska");
@@ -33,7 +34,38 @@ public class App
     	user.setTelephoneNumber(323478237);
     	
     	genericDao.add(user);
+    	genericDao.getEntityManager().close();
+    	
     	*/
+<<<<<<< HEAD
+=======
+    	
+    		EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistenceUnit");
+    		EntityManager em = emf.createEntityManager();
+    		em.getTransaction().begin();
+
+    		Book book = new Book();
+    		List<Author> authorList = new ArrayList<Author>();
+    		Author author = new Author();
+    		author.setName("Taras");
+    		author.setSurname("Shevchenko");
+    		authorList.add(author);
+    		book.setAuthors(authorList); 
+    		book.setAmountOfPage(20);
+    		Publication publication = new Publication();
+    		publication. setName("Syayvo");
+    		book.setPublication(publication);
+    		book.setName("Mood");
+    		book.setYear(1987);
+    		
+    		em.persist(publication);
+    		em.persist(book);
+
+    		em.getTransaction().commit();
+    		em.close();
+    		emf.close();
+    		
+>>>>>>> 45f9124d13ca83a1869589d1baa6440f45a437d0
     	
     	}
     }

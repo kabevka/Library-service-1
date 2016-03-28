@@ -2,6 +2,7 @@ package edu.ita.softserve.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -34,16 +34,17 @@ public class Book implements Serializable{
     @Column(name="description", nullable=true)
     private String description;
     
-    @ManyToMany(targetEntity=Author.class, fetch=FetchType.EAGER)
-    @JoinTable(	name="books_authors", 
-    		joinColumns={@JoinColumn(name="id_book")},
-	    	inverseJoinColumns={@JoinColumn(name="id_author")})
+    @ManyToMany(cascade=CascadeType.ALL, targetEntity=Author.class)
     private List<Author> authors;
     
     @Column(name="amount_of_page", nullable=false)
     private int amountOfPage;
     
-    @ManyToOne(targetEntity=Book.class, fetch=FetchType.LAZY)
+    /*@ManyToOne(targetEntity=Book.class, fetch=FetchType.LAZY)
+    private Publication publication;*/
+    
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name="publication_id")
     private Publication publication;
     
     @Column(name="year_of_publishing", nullable=false)
