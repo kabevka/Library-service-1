@@ -12,7 +12,7 @@ import edu.ita.softserve.dao.impl.jpa.JpaUserDao;
 public class DaoFactory {
 	
 	private static UserDao userDao = null;
-	private static TakenDao takenDao = null;
+	private TakenDao takenDao = null;
 	private BookDao bookDao = null;
 	private InstanceDao instanceDao = null;
 	
@@ -32,10 +32,10 @@ public class DaoFactory {
 		return instance;
 	}
 	
-	public static UserDao getUserDao(){
+	public  UserDao getUserDao(){
 		return userDao;
 	}
-	public static TakenDao getTakenDao(){
+	public  TakenDao getTakenDao(){
 		return takenDao;
 	}
 

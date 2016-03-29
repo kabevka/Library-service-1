@@ -38,6 +38,15 @@ public class Adress implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Adress(Long id, String city, String street, String numberOfHouse, Integer numberOfFlat) {
+		super();
+		this.id = id;
+		this.city = city;
+		this.street = street;
+		this.numberOfHouse = numberOfHouse;
+		this.numberOfFlat = numberOfFlat;
+	}
+
 	public Long getId() {
 		return id;
 	}

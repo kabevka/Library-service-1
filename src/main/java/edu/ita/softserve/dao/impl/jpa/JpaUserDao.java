@@ -13,7 +13,7 @@ public class JpaUserDao extends JpaGenericDao<User, Long> implements UserDao {
 
 	public List<User> getAllDeptors() {
 		List<User> users = null;
-		Query query = entityManager.createNativeQuery("select user.* from user  where id = (select user_id from taken where date_of_given_back<curdate())",User.class);
+		Query query = entityManager.createNativeQuery("select * from user inner join taken on taken.date_of_given_back<curdate()",User.class);
 		users =(List<User>)query.getResultList();
 		return users;
 	}

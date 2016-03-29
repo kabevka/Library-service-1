@@ -28,7 +28,7 @@ public abstract class JpaGenericDao<T,V> implements GenericDao<T, V> {
 	}
 	
 	public void add(T t) {
-	    	entityManager = JPAUtil.getEntityManager();
+	    entityManager = JPAUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
 		entityManager.persist(t);
@@ -36,7 +36,7 @@ public abstract class JpaGenericDao<T,V> implements GenericDao<T, V> {
 	}
 	
 	public void delete(T t) {
-	    	entityManager = JPAUtil.getEntityManager();
+	    entityManager = JPAUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
 		entityManager.remove(t);
@@ -45,7 +45,7 @@ public abstract class JpaGenericDao<T,V> implements GenericDao<T, V> {
 	}
 	
 	public T findById(V id) {
-	    	EntityManager entityManager = JPAUtil.getEntityManager();
+	    EntityManager entityManager = JPAUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
 		T t = entityManager.find(entityType, id);
