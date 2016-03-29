@@ -8,8 +8,7 @@ import edu.ita.softserve.entity.User;
 
 public class UserService {
 
-	public void update(final User curentUser) {
-		User updatedUser = null;
+	public void update(final User curentUser, final User updatedUser) {
 		if (!curentUser.getFirstName().equals("") & curentUser.getFirstName() != null) {
 			updatedUser.setFirstName(curentUser.getFirstName());
 		}
