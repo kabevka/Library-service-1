@@ -39,6 +39,9 @@ public class User implements Serializable {
 	@Column(name = "date_of_registration")
 	private Date dateOfRegistration;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	private Set<User> users;
+	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "adress_id")
 	private Adress adress;
@@ -94,4 +97,13 @@ public class User implements Serializable {
 	public void setAdress(Adress adress) {
 		this.adress = adress;
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", firstName=" + firstName + ", secondName=" + secondName + ", telephoneNumber="
+				+ telephoneNumber + ", dateOfRegistration=" + dateOfRegistration + ", users=" + users + ", adress="
+				+ adress + "]";
+	}
+	
+	
 }
