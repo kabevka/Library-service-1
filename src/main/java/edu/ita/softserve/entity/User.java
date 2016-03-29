@@ -58,9 +58,8 @@ public class User implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public User(Long id, String firstName, String secondName, int age, int telephoneNumber, Date dateOfRegistration,
+	public User(String firstName, String secondName, int age, int telephoneNumber, Date dateOfRegistration,
 			Adress adress) {
-		this.id = id;
 		this.firstName = firstName;
 		this.secondName = secondName;
 		this.age = age;

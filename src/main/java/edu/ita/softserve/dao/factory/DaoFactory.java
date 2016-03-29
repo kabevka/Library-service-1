@@ -1,17 +1,21 @@
 package edu.ita.softserve.dao.factory;
 
+import edu.ita.softserve.dao.impl.AdressDao;
 import edu.ita.softserve.dao.impl.BookDao;
 import edu.ita.softserve.dao.impl.InstanceDao;
 import edu.ita.softserve.dao.impl.TakenDao;
 import edu.ita.softserve.dao.impl.UserDao;
+import edu.ita.softserve.dao.impl.jpa.JpaAdressDao;
 import edu.ita.softserve.dao.impl.jpa.JpaBookDao;
 import edu.ita.softserve.dao.impl.jpa.JpaInstanceDao;
 import edu.ita.softserve.dao.impl.jpa.JpaTakenDao;
 import edu.ita.softserve.dao.impl.jpa.JpaUserDao;
+import edu.ita.softserve.entity.Adress;
 
 public class DaoFactory {
 	
-	private static UserDao userDao = null;
+	private AdressDao adressDao = null;
+	private UserDao userDao = null;
 	private TakenDao takenDao = null;
 	private BookDao bookDao = null;
 	private InstanceDao instanceDao = null;
@@ -19,6 +23,7 @@ public class DaoFactory {
 	private static DaoFactory instance = null;
 	
 	private DaoFactory(){
+		adressDao = new JpaAdressDao();
 		userDao = new JpaUserDao();
 		takenDao = new JpaTakenDao();
 		bookDao = new JpaBookDao();
@@ -30,6 +35,10 @@ public class DaoFactory {
 			instance = new DaoFactory();
 		}
 		return instance;
+	}
+	
+	public AdressDao getAdressDao(){
+		return adressDao;
 	}
 	
 	public  UserDao getUserDao(){
