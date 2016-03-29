@@ -4,5 +4,5 @@ import edu.ita.softserve.dao.GenericDao;
 import edu.ita.softserve.entity.Book;
 
 public interface BookDao extends GenericDao<Book, Long> {
-
+public Book findbyName(String name);
 }
