@@ -40,9 +40,6 @@ public class Book implements Serializable{
     @Column(name="amount_of_page", nullable=false)
     private int amountOfPage;
     
-    /*@ManyToOne(targetEntity=Book.class, fetch=FetchType.LAZY)
-    private Publication publication;*/
-    
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name="publication_id")
     private Publication publication;
