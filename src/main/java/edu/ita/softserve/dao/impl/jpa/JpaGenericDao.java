@@ -13,6 +13,7 @@ import javax.transaction.SystemException;
 import javax.transaction.Transaction;
 
 import edu.ita.softserve.dao.GenericDao;
+import edu.ita.softserve.util.JPAUtil;
 
 public abstract class JpaGenericDao<T,V> implements GenericDao<T, V> {
 	
@@ -27,6 +28,7 @@ public abstract class JpaGenericDao<T,V> implements GenericDao<T, V> {
 	}
 	
 	public void add(T t) {
+	    	entityManager = JPAUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
 		entityManager.persist(t);
@@ -34,6 +36,7 @@ public abstract class JpaGenericDao<T,V> implements GenericDao<T, V> {
 	}
 	
 	public void delete(T t) {
+	    	entityManager = JPAUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
 		entityManager.remove(t);
@@ -42,6 +45,7 @@ public abstract class JpaGenericDao<T,V> implements GenericDao<T, V> {
 	}
 	
 	public T findById(V id) {
+	    	EntityManager entityManager = JPAUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
 		T t = entityManager.find(entityType, id);
