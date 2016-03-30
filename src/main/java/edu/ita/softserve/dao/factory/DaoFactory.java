@@ -2,13 +2,10 @@ package edu.ita.softserve.dao.factory;
 
 import edu.ita.softserve.dao.impl.AdressDao;
 import edu.ita.softserve.dao.impl.BookDao;
-import edu.ita.softserve.dao.impl.InstanceDao;
-import edu.ita.softserve.dao.impl.TakenDao;
 import edu.ita.softserve.dao.impl.UserDao;
 import edu.ita.softserve.dao.impl.jpa.JpaAdressDao;
 import edu.ita.softserve.dao.impl.jpa.JpaBookDao;
 import edu.ita.softserve.dao.impl.jpa.JpaInstanceDao;
-import edu.ita.softserve.dao.impl.jpa.JpaTakenDao;
 import edu.ita.softserve.dao.impl.jpa.JpaUserDao;
 import edu.ita.softserve.entity.Adress;
 
