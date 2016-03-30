@@ -16,7 +16,6 @@ public class DaoFactory {
 	
 	private AdressDao adressDao = null;
 	private UserDao userDao = null;
-	private TakenDao takenDao = null;
 	private BookDao bookDao = null;
 	private InstanceDao instanceDao = null;
 	
@@ -25,7 +24,6 @@ public class DaoFactory {
 	private DaoFactory(){
 		adressDao = new JpaAdressDao();
 		userDao = new JpaUserDao();
-		takenDao = new JpaTakenDao();
 		bookDao = new JpaBookDao();
 		instanceDao = new JpaInstanceDao();
 	}
@@ -44,10 +42,7 @@ public class DaoFactory {
 	public  UserDao getUserDao(){
 		return userDao;
 	}
-	public  TakenDao getTakenDao(){
-		return takenDao;
-	}
-
+	
 	public BookDao getBookDao() {
 	    return bookDao;
 	}
