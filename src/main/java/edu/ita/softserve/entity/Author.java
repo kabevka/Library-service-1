@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -26,14 +28,16 @@ public class Author implements Serializable{
 	@Column(name = "id")
 	private Long id;
 	
-	@Column (name = "name", length = 45)
+	@Column (name = "name", length = 45,unique = true)
 	private String name;
 	
 	@Column (name = "surname", length = 45)
 	private String surname;
 	
 	@ManyToMany(cascade=CascadeType.ALL, targetEntity=Book.class)
-	private List<Book> bookList = new ArrayList<Book>();
+	@JoinTable(joinColumns = {@JoinColumn(name = "book_id")},
+	inverseJoinColumns = {@JoinColumn(name = "author_id")})
+	private List<Book> bookList;
 	
 	public Author() {}
 	

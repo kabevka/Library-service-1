@@ -28,14 +28,21 @@ public class Adress implements Serializable {
 	@Column(name = "street")
 	private String street;
 	
-	@Column(name = "nubmber_of_house")
+	@Column(name = "number_of_house")
 	private String numberOfHouse;
 	
-	@Column(name = "nubmer_of_flat")
+	@Column(name = "number_of_flat")
 	private Integer numberOfFlat;
 	
 	public Adress() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public Adress(String city, String street, String numberOfHouse, Integer numberOfFlat) {
+		this.city = city;
+		this.street = street;
+		this.numberOfHouse = numberOfHouse;
+		this.numberOfFlat = numberOfFlat;
 	}
 
 	public Long getId() {

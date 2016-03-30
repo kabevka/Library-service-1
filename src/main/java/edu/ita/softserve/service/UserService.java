@@ -3,13 +3,14 @@ package edu.ita.softserve.service;
 import java.sql.Date;
 import java.util.List;
 
+import edu.ita.softserve.dao.factory.DaoFactory;
 import edu.ita.softserve.dao.impl.jpa.JpaUserDao;
 import edu.ita.softserve.entity.User;
+import edu.ita.softserve.util.JPAUtil;
 
 public class UserService {
 
-	public void update(final User curentUser) {
-		User updatedUser = null;
+	public void update(final User curentUser, final User updatedUser) {
 		if (!curentUser.getFirstName().equals("") & curentUser.getFirstName() != null) {
 			updatedUser.setFirstName(curentUser.getFirstName());
 		}
@@ -25,7 +26,7 @@ public class UserService {
 		if ((curentUser.getAdress() != null)) {
 			updatedUser.setAdress(curentUser.getAdress());
 		}
-		new JpaUserDao().update(updatedUser);
+		DaoFactory.getInstance().getUserDao().update(updatedUser);
 	}
 
 	public void delete(User user) {
@@ -46,5 +47,10 @@ public class UserService {
 	
 	public List<User> getAll(){
 		return new JpaUserDao().getAll();
+	}
+	
+	public int getAvarageAgeByBookName(String bookName){
+		new JpaUserDao().setEntityManager(JPAUtil.getEntityManager());
+		return new JpaUserDao().getAvarageAgeUserByBookName(bookName);
 	}
 }

@@ -24,7 +24,7 @@ public class Publication implements Serializable{
     private Long id;
    
     	
-	@Column (name = "name", length = 45)
+	@Column (name = "name", length = 45, unique = true)
 	private String name;
 	
 	@OneToMany(cascade = CascadeType.ALL, targetEntity=Book.class)
