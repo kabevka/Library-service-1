@@ -6,6 +6,7 @@ import java.util.List;
 import edu.ita.softserve.dao.factory.DaoFactory;
 import edu.ita.softserve.dao.impl.jpa.JpaUserDao;
 import edu.ita.softserve.entity.User;
+import edu.ita.softserve.util.JPAUtil;
 
 public class UserService {
 
@@ -46,5 +47,10 @@ public class UserService {
 	
 	public List<User> getAll(){
 		return new JpaUserDao().getAll();
+	}
+	
+	public int getAvarageAgeByBookName(String bookName){
+		new JpaUserDao().setEntityManager(JPAUtil.getEntityManager());
+		return new JpaUserDao().getAvarageAgeUserByBookName(bookName);
 	}
 }

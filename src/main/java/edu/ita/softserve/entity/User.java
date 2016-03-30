@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 @Entity
 @Table(name = "user")
@@ -35,20 +36,22 @@ public class User implements Serializable {
 	
 	@Column(name = "age")
 	private int age;
-	
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
 
 	@Column(name = "telephone_number")
-	private int telephoneNumber;
+	private long telephoneNumber;
 	
 	@Column(name = "date_of_registration")
 	private Date dateOfRegistration;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "instance_id")
+	private Instance instance;
+	
+	@Column(name = "date_of_given")
+	private Date dateOfGiven;
+	
+	@Column(name = "date_of_given_back")
+	private Date dateOfGivenBack;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "adress_id")
@@ -92,11 +95,19 @@ public class User implements Serializable {
 		this.secondName = secondName;
 	}
 
-	public int getTelephoneNumber() {
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public long getTelephoneNumber() {
 		return telephoneNumber;
 	}
 
-	public void setTelephoneNumber(int telephoneNumber) {
+	public void setTelephoneNumber(long telephoneNumber) {
 		this.telephoneNumber = telephoneNumber;
 	}
 
@@ -108,20 +119,35 @@ public class User implements Serializable {
 		this.dateOfRegistration = dateOfRegistration;
 	}
 
+	public Instance getInstance() {
+		return instance;
+	}
+
+	public void setInstance(Instance instance) {
+		this.instance = instance;
+	}
+
+	public Date getDateOfGiven() {
+		return dateOfGiven;
+	}
+
+	public void setDateOfGiven(Date dateOfGiven) {
+		this.dateOfGiven = dateOfGiven;
+	}
+
+	public Date getDateOfGivenBack() {
+		return dateOfGivenBack;
+	}
+
+	public void setDateOfGivenBack(Date dateOfGivenBack) {
+		this.dateOfGivenBack = dateOfGivenBack;
+	}
+
 	public Adress getAdress() {
 		return adress;
 	}
 
 	public void setAdress(Adress adress) {
 		this.adress = adress;
-	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", secondName=" + secondName + ", telephoneNumber="
-				+ telephoneNumber + ", dateOfRegistration=" + dateOfRegistration + ", adress="
-				+ adress + "]";
-	}
-	
-	
+	}	
 }

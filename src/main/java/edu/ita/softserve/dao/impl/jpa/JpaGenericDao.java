@@ -18,7 +18,7 @@ import edu.ita.softserve.util.JPAUtil;
 public abstract class JpaGenericDao<T,V> implements GenericDao<T, V> {
 	
 	private Class<T> entityType;
-	protected EntityManager entityManager;
+	protected EntityManager entityManager = JPAUtil.getEntityManager();;
 	
 	public JpaGenericDao() {
 		ParameterizedType genericSuperClass = (ParameterizedType) getClass()
