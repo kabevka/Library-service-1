@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,8 +28,9 @@ public class Publication implements Serializable{
 	@Column (name = "name", length = 45, unique = true)
 	private String name;
 	
-	@OneToMany(cascade = CascadeType.ALL, targetEntity=Book.class)
-    private List<Book> books;
+	
+	@OneToMany(fetch = FetchType.LAZY, targetEntity=Book.class)
+	private List<Book> books;
 	
 	public void addBook(Book book) {
 		if (!books.contains(book)) {

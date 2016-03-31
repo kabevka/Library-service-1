@@ -10,8 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -34,18 +36,25 @@ public class Book implements Serializable{
     @Column(name="description", nullable=true)
     private String description;
     
-    @ManyToMany(cascade=CascadeType.ALL, targetEntity=Author.class)
+    @ManyToMany(fetch = FetchType.LAZY, targetEntity=Author.class)
     private List<Author> authors;
+    
+    
     
     @Column(name="amount_of_page", nullable=false)
     private int amountOfPage;
     
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name="publication_id")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE})
+    @JoinColumn(name = "publication_id", nullable = false)
     private Publication publication;
     
-    @Column(name="year_of_publishing", nullable=false)
-    private int year;
+    
+    @OneToMany(fetch = FetchType.LAZY, targetEntity=Instance.class)
+    private List<Instance> instances;
+    
+    
+    @Column(name="year", nullable=false)
+    private Integer year;
     
     public Long getId() {
         return id;
@@ -93,6 +102,7 @@ public class Book implements Serializable{
 
     public void setAuthors(List<Author> authors) {
         this.authors = authors;
+        
     }
 
     public Publication getPublication() {
@@ -102,8 +112,18 @@ public class Book implements Serializable{
     public void setPublication(Publication publication) {
         this.publication = publication;
     }
+    
+    
 
-    @Override
+    public List<Instance> getInstances() {
+		return instances;
+	}
+
+	public void setInstances(List<Instance> instances) {
+		this.instances = instances;
+	}
+
+	@Override
     public String toString() {
 	return "Book [id=" + id + ", name=" + name + ", description="
 		+ description + ", authors=" + authors + ", amountOfPage="

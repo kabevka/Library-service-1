@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import edu.ita.softserve.dao.factory.DaoFactory;
-import edu.ita.softserve.dao.impl.jpa.JpaBookDao;
 import edu.ita.softserve.entity.Book;
 import edu.ita.softserve.entity.Instance;
 import edu.ita.softserve.util.JPAUtil;

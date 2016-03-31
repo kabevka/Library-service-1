@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,9 +35,7 @@ public class Author implements Serializable{
 	@Column (name = "surname", length = 45)
 	private String surname;
 	
-	@ManyToMany(cascade=CascadeType.ALL, targetEntity=Book.class)
-	@JoinTable(joinColumns = {@JoinColumn(name = "book_id")},
-	inverseJoinColumns = {@JoinColumn(name = "author_id")})
+	@ManyToMany	(fetch = FetchType.LAZY, targetEntity=Book.class)
 	private List<Book> bookList;
 	
 	public Author() {}
